@@ -1,0 +1,6 @@
+source "http://rubygems.org"
+
+gem 'vagrant'
+gem 'veewee'
+gem 'rspec'
+gem 'capybara'
