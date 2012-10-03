@@ -25,7 +25,7 @@ var js101 = {
     var wrapperElem = $(this.jsConsole.getWrapperElement());
 
     try {
-      eval(this.jsConsole.getValue());
+      window.eval(this.jsConsole.getValue());
       wrapperElem.removeClass('error');
       wrapperElem.addClass('success');
     } catch (err) {

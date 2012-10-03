@@ -12,7 +12,17 @@
 </head>
 <body>
   <textarea id="jsTextArea">
-console.log("start writing some javascript!");
-  </textarea>
+function debug(msg) {
+  var res = $("#results");
+  if (res.length == 0) {
+    res = $('<div id="results">');
+    $("body").append(res);
+  }
+  res.text(msg);
+  console.log(msg);
+}
+
+debug('Start writing some JavaScript!');
+</textarea>
 </body>
 </html>
