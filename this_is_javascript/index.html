@@ -11,18 +11,24 @@
   <script src="js/js101.js" type="text/javascript"></script>
 </head>
 <body>
-  <textarea id="jsTextArea">
-function debug(msg) {
-  var res = $("#results");
-  if (res.length == 0) {
-    res = $('<div id="results">');
-    $("body").append(res);
-  }
-  res.text(msg);
-  console.log(msg);
-}
 
-debug('Start writing some JavaScript!');
-</textarea>
+<div id="input">
+  <div id="code">
+    <textarea id="jsTextArea">
+    </textarea>
+  </div>
+
+  <div id="snippets">
+    <ul>
+      <li data-snippet="debug">debug</li>
+      <li data-snippet="showDoug">thanks</li>
+      <li data-snippet="types">types</li>
+      <li data-snippet="prototypes">prototype</li>
+      <li data-snippet="this_constructor">this - constructor</li>
+    </ul>
+  </div>
+</div>
+
+<div id="results"/>
 </body>
 </html>

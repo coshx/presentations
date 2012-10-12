@@ -21,11 +21,19 @@ Troubleshooting
     - can you do it through virtualization software instead?
   * It freezes when I click on *Try Ubuntu*
     - don't click on *Try Ubuntu* but instead type `Ctrl+Alt+F1` to get to the first terminal. You have 6 of them on F1 through F6, and `Ctrl+Alt+F7` will get you back to the window manager (but why would you want to do that if it's just going to freeze?)
+    - you can use the text based browser `lynx`
     - instead of opening up a page in the browser, you can use retrieve it with `wget` and then view it with `cat` or `less`
   * No icons are showing up on my desktop
     - Type `Alt+F2` to bring up a command menu, and then type `xterm` and hit enter. You'll be able to launch any subsequent commands (like `firefox`) from here
   * when I type, some strange box pops up in the lower right corner of the desktop
     - I know, it's annoying, right? This is a feature of this particular file explorer, to quickly go to a file in the current folder, and the desktop is a folder, too. Just click inside your terminal to make sure that the keyboard input goes to that window.
+  * when I install a package, I see the following error:
+```
+Erorrs were encountered while processing:
+ initramfs-tools
+E: Sub-process /usr/bin/dpkg returned an error code (1)
+```
+    - this is a bug with 
 
 Basic Commands
 --------------
@@ -62,6 +70,7 @@ Basic Concepts
   * super user
   * Single Responsibility
   * Tab Completion
+  * dot-files
 
 
 Networking
@@ -116,12 +125,9 @@ rails server
 
 Mono Shell (www.mono-project.com/CsharpRepl)
 --------------------------------------------
-  - This was not working for me when I tried it on the live usb. Maybe someone will have better luck than I did.
-
 ```
-sudo apt-cache search mono
-sudo apt-get install mono-csharp-shell
-csharp
+cd ~/linux101/csharp
+csharp ls.cs
 ```
 
 Intermediate Concepts
