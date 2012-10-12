@@ -1,0 +1,3 @@
+guard 'jekyll', :source => './src' do
+  watch %r{^src/.*}
+end

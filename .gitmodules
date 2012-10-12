@@ -1,0 +1,3 @@
+[submodule "hekyll"]
+	path = hekyll
+	url = https://github.com/bmcmurray/hekyll
