@@ -14,11 +14,11 @@ time, mark, audio, video {
   margin: 0;
   padding: 0;
   border: 0;
-  font-size: 100%;
   font: inherit;
+  font-size: 100%;
   vertical-align: baseline; }
 
-body {
+html {
   line-height: 1; }
 
 ol, ul {
@@ -75,7 +75,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 body {
   font-family: "Myriad Pro", Myriad, Arial, "Helvetica", Helvetica, Geneva, sans-serif;
   min-height: 740px;
-  background: #c5c7b6;
+  background: #231f20;
   -webkit-font-smoothing: antialiased;
   color: #787a64; }
 
@@ -89,22 +89,22 @@ a {
   color: #c0b6c7;
   text-decoration: underline;
   padding: 0 0.1em;
-  background: rgba(231, 232, 225, 0.5);
+  background: rgba(76, 67, 69, 0.5);
   border-radius: 0.2em;
-  -moz-transition-property: background;
   -webkit-transition-property: background;
+  -moz-transition-property: background;
   -o-transition-property: background;
   transition-property: background;
-  -moz-transition-duration: 0.5s;
   -webkit-transition-duration: 0.5s;
+  -moz-transition-duration: 0.5s;
   -o-transition-duration: 0.5s;
   transition-duration: 0.5s; }
 
 a:hover {
-  background: #e7e8e1; }
+  background: #4c4345; }
 
 h1 {
-  color: #6c577a;
+  color: #1588c3;
   font-weight: bold;
   font-size: 2em; }
 
@@ -112,9 +112,8 @@ h1 {
 .step {
   width: 900px;
   padding: 40px;
-  -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
-  -ms-box-sizing: border-box;
+  -moz-box-sizing: border-box;
   box-sizing: border-box;
   font-family: "Myriad Pro", Myriad, Arial, "Helvetica", Helvetica, Geneva, sans-serif;
   font-size: 48px;
@@ -122,8 +121,8 @@ h1 {
 
 /* fade out inactive slides */
 .step {
-  -moz-transition-duration: 1s;
   -webkit-transition-duration: 1s;
+  -moz-transition-duration: 1s;
   -o-transition-duration: 1s;
   transition-duration: 1s; }
 
