@@ -94,12 +94,22 @@ input {
 
 a {
   text-decoration: none;
-  outline: none; }
+  outline: none;
+  color: #1588c3; }
+  a:hover {
+    color: #1588c3; }
+  a:active {
+    color: #1588c3; }
   a:focus {
     outline: thin dotted; }
   a:hover, a:active {
     text-decoration: underline;
+    color: #1588c3;
     outline: 0; }
+    a:hover:hover, a:active:hover {
+      color: #1588c3; }
+    a:hover:active, a:active:active {
+      color: #1588c3; }
 
 p {
   line-height: 1.5;
