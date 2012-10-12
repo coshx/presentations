@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+<title>Example: Weather Report</title>
+<meta name="author" content="Ben Taitelbaum" />
+<meta name="description" content="Presented at InnovateVA, 2012">
+
+
+<link href="css/themes/coshx/coshx.css" rel="stylesheet" />
+
+<link href="css/syntax.css" rel="stylesheet" />
+</head>
+<body>
+  <div id="impress" class="impress-not-supported">
+    <div class="step">
+      <h4>Code Under Test:</h4>
+<div class="highlight"><pre><code class="javascript"><span class="kd">function</span> <span class="nx">getCurrentTemperature</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">sensorReading</span> <span class="o">=</span> <span class="nx">getSensorReading</span><span class="p">();</span>
+  <span class="kd">var</span> <span class="nx">temp</span> <span class="o">=</span> <span class="nx">sensorToTemp</span><span class="p">(</span><span class="nx">sensorReading</span><span class="p">);</span>
+  <span class="k">return</span> <span class="nx">temp</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<hr>
+
+<h4>Integration Test:</h4>
+<div class="highlight"><pre><code class="text">1. Hook up an actual thermometer
+2. Heat/Cool the room
+3. Run the code
+</code></pre>
+</div>
+
+    </div>
+  </div>
+</body>
+</html>
+
