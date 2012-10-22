@@ -1,0 +1,32 @@
+// Variables
+//------------------------------------------------------------------------------
+
+// Colors
+$text: #787A64;
+$bg: #231F20;
+$base: #FFFFFF;
+$softlight: #C0B6C7;
+$highlight: #1588C3;
+$link: #1588C3;
+$link-hover: #1588C3;
+
+
+// Font Stacks
+//------------------------------------------------------------------------------
+
+$myriad: "Myriad Pro", Myriad, Arial, "Helvetica", Helvetica, Geneva, sans-serif;
+$sans: "Myriad Pro", Myriad, Arial, "Helvetica", Helvetica, Geneva, sans-serif;
+$serif: "Georgia", serif;
+$mono: Monaco, monospace, sans-serif;
+
+// Grays
+//------------------------------------------------------------------------------
+$black: #000;
+$grayDark: lighten($black, 25%);
+$gray: lighten($black, 50%);
+$grayLight: lighten($black, 75%);
+$grayLighter: lighten($black, 90%);
+$white: #fff;
+
+// Animation
+$transition_duration: 2s;
