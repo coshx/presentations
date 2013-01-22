@@ -127,7 +127,7 @@
     var props = {
         position: "absolute",
         transformOrigin: "top left",
-        transition: "all 0.2s ease-in-out",
+        transition: "all 1s ease-in-out",
         transformStyle: "preserve-3d"
     }
     
@@ -239,12 +239,12 @@
             // we need to 'scale' the perspective, too
             perspective: step.scale * 1000 + "px",
             transform: scale(target.scale),
-            transitionDelay: (zoomin ? "200ms" : "0ms")
+            transitionDelay: (zoomin ? "500ms" : "0ms")
         });
         
         css(canvas, {
             transform: rotate(target.rotate, true) + translate(target.translate),
-            transitionDelay: (zoomin ? "0ms" : "200ms")
+            transitionDelay: (zoomin ? "0ms" : "500ms")
         });
         
         current = target;

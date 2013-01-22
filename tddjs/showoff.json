@@ -1,0 +1,8 @@
+{ 
+  "name": "TDD ∩ JS", 
+  "author": "Ben Taitelbaum",
+  "company": "Coshx Labs",
+  "event": "CV.js",
+  "date": "January 23, 2013",
+  "sections": [ {"section":"intro"} ]
+}

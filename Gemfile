@@ -11,3 +11,6 @@ gem 'redcarpet'
 gem 'rake'
 gem 'compass'
 gem 'guard-compass'
+
+gem 'showoff'
+
