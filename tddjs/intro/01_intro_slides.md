@@ -5,6 +5,8 @@
 
 ~~~CONFIG:event~~~ -- ~~~CONFIG:date~~~
 
+Comment/Rate: **~~~CONFIG:speakerrate~~~**
+
 
 <!SLIDE subsection>
 # Overview

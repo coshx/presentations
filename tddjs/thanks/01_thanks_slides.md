@@ -4,4 +4,4 @@
 <!SLIDE subsection bullets>
 # Thanks!
 
-* Comment/Rate: **http://spkr8.com/t/19461**
+* Comment/Rate: **~~~CONFIG:speakerrate~~~**
