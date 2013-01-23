@@ -36,9 +36,11 @@
     @@@ html
     <button id="run">Run ▶</button>
     <textarea id="test" 
-              placeholder="Enter Test Here" rows="10"/>
+              placeholder="Enter Test Here" rows="10">
+    </textarea>
     <textarea id="code" 
-              placeholder="Enter Code Here" rows="10"/>
+              placeholder="Enter Code Here" rows="10">
+    </textarea>
     <div id="result">Results</div>
 
     <script>
@@ -51,8 +53,8 @@
 <!SLIDE subsection accepts-input>
 # BDD First Example
 <button id="run">Run ▶</button>
-<textarea id="test" placeholder="Enter Test Here" rows="10"/>
-<textarea id="code" placeholder="Enter Code Here" rows="10"/>
+<textarea id="test" placeholder="Enter Test Here" rows="10">Test Goes Here</textarea>
+<textarea id="code" placeholder="Enter Code Here" rows="10">Code Goes Here</textarea>
 <div id="result" style="text-align:center; font-size:2em;">Results</div>
 <script>
   $("#run").on("click", function() {

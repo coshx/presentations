@@ -156,9 +156,11 @@ Then I should see "Test Passed" in the result area</code></pre>
 
 <pre class="sh_html"><code>&lt;button id="run"&gt;Run &#x25B6;&lt;/button&gt;
 &lt;textarea id="test" 
-          placeholder="Enter Test Here" rows="10"/&gt;
+          placeholder="Enter Test Here" rows="10"&gt;
+&lt;/textarea&gt;
 &lt;textarea id="code" 
-          placeholder="Enter Code Here" rows="10"/&gt;
+          placeholder="Enter Code Here" rows="10"&gt;
+&lt;/textarea&gt;
 &lt;div id="result"&gt;Results&lt;/div&gt;
 
 &lt;script&gt;
@@ -171,8 +173,8 @@ Then I should see "Test Passed" in the result area</code></pre>
 <h1>BDD First Example</h1>
 
 <p><button id="run">Run &#x25B6;</button>
-<textarea id="test" placeholder="Enter Test Here" rows="10"/>
-<textarea id="code" placeholder="Enter Code Here" rows="10"/>
+<textarea id="test" placeholder="Enter Test Here" rows="10">Test Goes Here</textarea>
+<textarea id="code" placeholder="Enter Code Here" rows="10">Code Goes Here</textarea>
 <div id="result" style="text-align:center; font-size:2em;">Results</div>
 <script>
   $("#run").on("click", function() {
@@ -269,10 +271,7 @@ tddjs.runTests = function(tests, code) {
 
 <ul>
 <li>https://github.com/pivotal/jasmine/downloads</li>
-<li>Edit SpecRunner.html
-@@@ html
-<script src="src/tddjs.js"/>
-<script src="spec/tddjsSpec.js"/></li>
+<li>Edit SpecRunner.html</li>
 </ul>
 </div>
 </div><div class="slide" data-transition="none"><div class="content subsection" ref="tdd/02_jasmine_slides/2">
