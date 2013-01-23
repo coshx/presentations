@@ -1,14 +1,22 @@
-describe("tddjs", function() {
-  var tests, code;
+describe("TddJs", function() {
+  describe("Click Run", function() {
+    it("calls TddJs.runTests", function() {
+      var callback;
 
-  describe("runTests", function() {
-    it("runs the specified tests", function() {
-      tests = "return true;"
-      expect(tddjs.runTests(tests, code)).toBeTrue();
+      runs(function() {
+        callback = sinon.spy();
+        TddJs.runTests = callback;
+        $("#run").click();
+        expect(callback.getCall(0).args[0]).toEqual('');
+      });
+      waitsFor(function() {
+        return callback.called;
+      }, "callback to be called", 3000);
+      runs(function() {
+        expect(callback.called).toBeTruthy();
+      });
+
     });
 
-    it("can reference the specified code", function() {
-
-    });
   });
 });

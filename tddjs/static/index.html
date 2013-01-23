@@ -190,7 +190,124 @@ Then I should see "Test Passed" in the result area</code></pre>
 <li>Where do we go next?</li>
 </ul>
 </div>
-</div><div class="slide" data-transition="none"><div class="content code smaller small-hrefs subsection" ref="tdd/01_qunit_slides/1">
+</div><div class="slide" data-transition="none"><div class="content subsection code smaller small-hrefs" ref="bdd/02_bdd_qunit_slides/1">
+<h1>BDD w/ QUnit - Setup</h1>
+
+<pre class="sh_html"><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;title&gt;TDD in QUnit&lt;/title&gt;
+    &lt;link rel="stylesheet" 
+          href="http://code.jquery.com/qunit/qunit-1.10.0.css"&gt;
+    &lt;script src="http://code.jquery.com/jquery-1.9.0.js"&gt;&lt;/script&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;div id="qunit"&gt;&lt;/div&gt;
+    &lt;div id="qunit-fixture"&gt;&lt;/div&gt;
+    &lt;script src="http://code.jquery.com/qunit/qunit-1.10.0.js"&gt;&lt;/script&gt;
+    &lt;script src="tddjs_qunit_tests.js"&gt;&lt;/script&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+</div>
+</div><div class="slide" data-transition="none"><div class="content subsection code smaller" ref="bdd/02_bdd_qunit_slides/2">
+<h1>BDD w/ QUnit - Integration Test</h1>
+
+<pre class="sh_javascript"><code>module("TddJs.integration");
+
+test("clicking 'Run' runs the tests", function() {
+  var test = 'equal(myFunction(), 42);';
+  var code = 'myFunction = function() { return 42; };';
+  $("#test").val(test);
+  $("#code").val(code);
+  $("#run").click();
+  equal($("#result").text(), 'Passed');
+});</code></pre>
+</div>
+</div><div class="slide" data-transition="none"><div class="content subsection" ref="bdd/02_bdd_qunit_slides/3">
+<h1>BDD w/ QUnit - Integration Test Result</h1>
+
+<p><img src="./file/bdd/../img/bdd_qunit_01failure.png" width="701" height="344" alt="Integration Test Failure (no DOM)"/>
+</p>
+</div>
+</div><div class="slide" data-transition="none"><div class="content subsection code smaller" ref="bdd/02_bdd_qunit_slides/4">
+<h1>BDD w/ QUnit - STTCPW</h1>
+
+<pre class="sh_javascript"><code>module("TddJs.integration", {
+  setup: function() {
+    var $fixture = $("#qunit-fixture");
+    $fixture.append('&lt;div id="result"&gt;Passed&lt;/div&gt;');
+  }
+});
+
+test("clicking 'Run' runs the tests", function() {
+  var test = 'equal(myFunction(), 42);';
+  var code = 'myFunction = function() { return 42; };';
+  $("#test").val(test);
+  $("#code").val(code);
+  $("#run").click();
+  equal($("#result").text(), 'Passed');
+});</code></pre>
+</div>
+</div><div class="slide" data-transition="none"><div class="content subsection" ref="bdd/02_bdd_qunit_slides/5">
+<h1>BDD w/ QUnit - Integration Test Result</h1>
+
+<p><img src="./file/bdd/../img/bdd_qunit_02sttcpw.png" width="722" height="321" alt="Integration Test Passing (STTCPW)"/>
+</p>
+</div>
+</div><div class="slide" data-transition="none"><div class="content subsection code smaller red" ref="bdd/02_bdd_qunit_slides/6">
+<h1>BDD w/ QUnit - Make It Fail!</h1>
+
+<pre class="sh_javascript"><code>test("clicking 'Run' runs the tests", function() {
+  equal($("#result").text(), '', "no results initially");
+  var test = 'equal(myFunction(), 42);';
+  var code = 'myFunction = function() { return 42; };';
+  $("#test").val(test);
+  $("#code").val(code);
+  $("#run").click();
+  equal($("#result").text(), 'Passed');
+});</code></pre>
+</div>
+</div><div class="slide" data-transition="none"><div class="content subsection code smaller" ref="bdd/02_bdd_qunit_slides/7">
+<h1>BDD w/ QUnit - Make It Pass</h1>
+
+<pre class="sh_javascript"><code>module("TddJs.integration", {
+  setup: function() {
+    var $fixture = $("#qunit-fixture");
+    $fixture.append('&lt;button id="run"&gt;Run&lt;/button&gt;');
+    $("#run").on("click", function() {
+      $fixture.append('&lt;div id="result"&gt;Passed&lt;/div&gt;');
+    });
+  }
+});
+
+test("clicking 'Run' runs the tests", function() {
+  equal($("#result").text(), '', "no results initially");
+  var test = 'equal(myFunction(), 42);';
+  var code = 'myFunction = function() { return 42; };';
+  $("#test").val(test);
+  $("#code").val(code);
+  $("#run").click();
+  equal($("#result").text(), 'Passed');
+});</code></pre>
+</div>
+</div><div class="slide" data-transition="none"><div class="content subsection bullets incremental" ref="bdd/02_bdd_qunit_slides/8">
+<h1>BDD w/ QUnit - Discussion</h1>
+
+<ul>
+<li>What next?</li>
+<li>How do we make this less ugly?</li>
+</ul>
+</div>
+</div><div class="slide" data-transition="none"><div class="content subsection" ref="tdd/01_tdd_slides">
+<h1>TDD</h1>
+
+<ul>
+<li>Test Driven Development</li>
+<li>Let <strong>Failing Tests</strong> Guide Us</li>
+</ul>
+</div>
+</div><div class="slide" data-transition="none"><div class="content code smaller small-hrefs subsection" ref="tdd/02_qunit_slides/1">
 <h1>QUnit TDD - Setup</h1>
 
 <pre class="sh_html"><code>&lt;!DOCTYPE html&gt;
@@ -199,74 +316,93 @@ Then I should see "Test Passed" in the result area</code></pre>
     &lt;meta charset="utf-8"&gt;
     &lt;title&gt;TDD in QUnit&lt;/title&gt;
     &lt;link rel="stylesheet" 
-          href="http://jquery.github.com/qunit/qunit/qunit.css"&gt;
+          href="http://code.jquery.com/qunit/qunit-1.10.0.css"&gt;
     &lt;script src="http://code.jquery.com/jquery-1.9.0.js"&gt;&lt;/script&gt;
   &lt;/head&gt;
   &lt;body&gt;
     &lt;div id="qunit"&gt;&lt;/div&gt;
     &lt;div id="qunit-fixture"&gt;&lt;/div&gt;
-    &lt;script src="http://jquery.github.com/qunit/qunit/qunit.js"&gt;&lt;/script&gt;
+    &lt;script src="http://code.jquery.com/qunit/qunit-1.10.0.js"&gt;&lt;/script&gt;
     &lt;script src="tddjs_qunit_tests.js"&gt;&lt;/script&gt;
   &lt;/body&gt;
 &lt;/html&gt;</code></pre>
 </div>
-</div><div class="slide" data-transition="none"><div class="content code smaller subsection" ref="tdd/01_qunit_slides/2">
-<h1>QUnit Test</h1>
+</div><div class="slide" data-transition="none"><div class="content code smaller subsection" ref="tdd/02_qunit_slides/2">
+<h1>QUnit Unit Test</h1>
 
-<pre class="sh_javascript"><code>module("tddjs.runTests");
+<pre class="sh_javascript"><code>module("TddJs.runTests");
 
 test("runs tests", function() {
   var test = '5;';
   var code = '';
-  var actual = tddjs.runTests(test, code);
+  var actual = TddJs.runTests(test, code);
   var expected = 5;
   var optionalMsg = "expected output to be 5";
   equal(actual, expected, optionalMsg);
-});
-
-test("tests can reference code", function() {
-  var test = 'myFunction();';
-  var code = 'function myFunction() { return 42; };';
-  equal(tddjs.runTests(test, code), 42);
 });</code></pre>
 </div>
-</div><div class="slide" data-transition="none"><div class="content subsection" ref="tdd/01_qunit_slides/3">
-<h1>QUnit Test Result</h1>
+</div><div class="slide" data-transition="none"><div class="content subsection" ref="tdd/02_qunit_slides/3">
+<h1>QUnit Unit Test Result</h1>
 
-<p><img src="./file/tdd/../img/qunit_fail_no_tddjs.png" width="881" height="511" alt="qunit failing because no tddjs defined"/>
+<p><img src="./file/tdd/../img/tdd_qunit_01no_tddjs.png" width="882" height="372" alt="qunit failing because no TddJs defined"/>
 </p>
 </div>
-</div><div class="slide" data-transition="none"><div class="content subsection code smaller" ref="tdd/01_qunit_slides/4">
-<h1>Make the Tests Pass</h1>
+</div><div class="slide" data-transition="none"><div class="content subsection code smaller" ref="tdd/02_qunit_slides/4">
+<h1>Make It Pass - Create a Library</h1>
 
-<p>Reference our library code from qunit html:</p>
+<h2>Add Library to HTML:</h2>
 
-<pre class="sh_html"><code>&lt;script src="tddjs.js"&gt;&lt;/script&gt;</code></pre>
+<pre class="sh_html"><code>&lt;script src="src/tddjs.js"&gt;&lt;/script&gt;</code></pre>
 
-<p>In the library code (tddjs.js):</p>
+<h2>Start Simple:</h2>
 
-<pre class="sh_javascript"><code>var tddjs = {};
-tddjs.runTests = function(tests, code) {
+<pre class="sh_javascript"><code>var TddJs = {};
+TddJs.runTests = function(tests, code) {
+  return eval(tests);
+}</code></pre>
+</div>
+</div><div class="slide" data-transition="none"><div class="content subsection code smaller red" ref="tdd/02_qunit_slides/5">
+<h1>Make a Failing Test</h1>
+
+<pre class="sh_javascript"><code>module("TddJs.runTests");
+
+test("can reference code from test", function() {
+  var test = 'myFunction();';
+  var code = 'myFunction = function() { return 42; }';
+  var actual = TddJs.runTests(test, code);
+  var expected = 42;
+  equal(actual, expected);
+});</code></pre>
+</div>
+</div><div class="slide" data-transition="none"><div class="content subsection" ref="tdd/02_qunit_slides/6">
+<h1>QUnit Unit Test Result</h1>
+
+<p><img src="./file/tdd/../img/tdd_qunit_03_myfunction_not_defined.png" width="921" height="449" alt="qunit failing because code not executed"/>
+</p>
+</div>
+</div><div class="slide" data-transition="none"><div class="content subsection code smaller" ref="tdd/02_qunit_slides/7">
+<h1>Make It Pass</h1>
+
+<pre class="sh_javascript"><code>var TddJs = {};
+TddJs.runTests = function(tests, code) {
   eval(code);
   return eval(tests);
-};</code></pre>
+}</code></pre>
 </div>
-</div><div class="slide" data-transition="none"><div class="content subsection" ref="tdd/01_qunit_slides/5">
-<h1>QUnit Test Result</h1>
+</div><div class="slide" data-transition="none"><div class="content subsection code smaller" ref="tdd/02_qunit_slides/8">
+<h1>What's Missing?</h1>
 
-<p><img src="./file/tdd/../img/qunit_pass.png" width="655" height="270" alt="qunit passing with eval in tddjs"/>
-</p>
+<pre class="sh_javascript"><code>asyncTest("executed when run clicked", function() {
+  expect(1);
+  var mockRunTests = function() {
+    ok(true);
+    start();
+  };
+  TddJs.runTests = mockRunTests;
+  $("#run").click();
+});</code></pre>
 </div>
-</div><div class="slide" data-transition="none"><div class="content subsection bullets" ref="tdd/01_qunit_slides/6">
-<h1>Iterate</h1>
-
-<ul>
-<li><strong>Refine</strong> Tests</li>
-<li><strong>Refactor</strong> Code</li>
-<li><strong>Repeat</strong> Until Satisfied</li>
-</ul>
-</div>
-</div><div class="slide" data-transition="none"><div class="content subsection" ref="tdd/02_jasmine_slides/1">
+</div><div class="slide" data-transition="none"><div class="content subsection" ref="tdd/03_jasmine_slides/1">
 <h1>Jasmine TDD - Setup</h1>
 
 <ul>
@@ -274,11 +410,134 @@ tddjs.runTests = function(tests, code) {
 <li>Edit SpecRunner.html</li>
 </ul>
 </div>
-</div><div class="slide" data-transition="none"><div class="content subsection" ref="tdd/02_jasmine_slides/2">
+</div><div class="slide" data-transition="none"><div class="content subsection code smaller" ref="tdd/03_jasmine_slides/2">
+<h1>Jasmine TDD (Async)</h1>
+
+<pre class="sh_javascript"><code>describe("TddJs", function() {
+  describe("Click Run", function() {
+    it("calls TddJs.runTests", function() {
+      var runTestsCalled;
+
+      runs(function() {
+        runTestsCalled = false;
+        var mockRunTests = function() {
+          runTestsCalled = true;
+        };
+        TddJs.runTests = mockRunTests;
+        $("#run").click();
+      });
+
+      waitsFor(function() {
+        return runTestsCalled;
+      }, "mockRunTests never called", 5000);
+
+      runs(function() {
+        expect(runTestsCalled).toBeTruthy();
+      });
+    });
+  });
+});</code></pre>
+</div>
+</div><div class="slide" data-transition="none"><div class="content subsection code smaller" ref="tdd/03_jasmine_slides/3">
+<h1>Jasmine TDD w/ Sinon</h1>
+
+<pre class="sh_javascript"><code>  describe("TddJs", function() {
+    describe("Click Run", function() {
+      it("calls TddJs.runTests", function() {
+        var callback;
+
+        runs(function() {
+          callback = sinon.spy();
+          TddJs.runTests = callback;
+          $("#run").click();
+        });
+        waitsFor(function() {
+          return callback.called;
+        }, "callback to be called", 3000);
+        runs(function() {
+          expect(callback.called).toBeTruthy();
+        });
+
+      });
+    });
+  });</code></pre>
+</div>
+</div><div class="slide" data-transition="none"><div class="content subsection" ref="tdd/03_jasmine_slides/4">
+<h1>Jasmine Failing</h1>
+
+<p><img src="./file/tdd/../img/tdd_jasmine_01failure.png" width="604" height="234" alt="example of jasmine failing"/>
+</p>
+</div>
+</div><div class="slide" data-transition="none"><div class="content subsection" ref="tdd/03_jasmine_slides/5">
+<h1>Jasmine Passing</h1>
+
+<p><img src="./file/tdd/../img/tdd_jasmine_02success.png" width="604" height="224" alt="example of jasmine passing"/>
+</p>
+</div>
+</div><div class="slide" data-transition="none"><div class="content subsection bullets" ref="tdd/03_jasmine_slides/6">
+<h1>Digging Deeper</h1>
+
 <ul>
-<li>TODO: use a spy to test that runTests was called when we clicked run</li>
-<li>TODO: add some async tests somewhere</li>
+<li>Who's responsible for sending args to <code>runTests</code>?</li>
+<li>Who <em>should</em> be responsible?</li>
+<li>Where do we test?</li>
 </ul>
+</div>
+</div><div class="slide" data-transition="none"><div class="content subsection code smaller" ref="tdd/03_jasmine_slides/7">
+<h1>Digging Deeper Option #1</h1>
+
+<pre class="sh_javascript"><code>it("calls runTests with correct args", function() {
+  var tests, callback;
+  tests = "5;";
+  $("#tests").val(tests);
+  callback = sinon.spy();
+  TddJs.runTests = callback;
+  $("#run").click();
+  expect(callback.getCall(0).args[0]).toEqual(tests);
+});</code></pre>
+</div>
+</div><div class="slide" data-transition="none"><div class="content subsection code smaller" ref="tdd/03_jasmine_slides/8">
+<h1>Digging Deeper Option #2</h1>
+
+<pre class="sh_javascript"><code>it("runs tests from the model", function() {
+  var tddjs = new TddJs();
+  tddjs.tests = "5;";
+  tddjs.code = "";
+  expect(tddjs.runTests()).toEqual(5);
+});
+
+it("sets model properties from the form", function() {
+  var tests = "42;";
+  $("#tests").val(tests);
+  expect(TddJs.get('tests')).toEqual(tests);
+});</code></pre>
+</div>
+</div><div class="slide" data-transition="none"><div class="content subsection code smaller" ref="tdd/03_jasmine_slides/9">
+<h1>Refactoring</h1>
+
+<pre class="sh_javascript"><code>it("runs the specified tests", function() {
+  var resultHandler;
+  TddJs.tests = "42;";
+  TddJs.code = "";
+
+  resultHandler = function(result) {
+    expect(result).toEqual(42);
+  };
+  TddJs.runTests(resultHandler);
+});
+
+describe("default result handler", function() {
+  it("updates the results on the page", function() {
+    TddJs.defautResultsHandler("hello");
+    expect($("#result")).toEqual("hello");
+  });
+});</code></pre>
+</div>
+</div><div class="slide" data-transition="none"><div class="content subsection" ref="thanks/01_thanks_slides/1">
+<h1>Questions, Comments, Concerns?</h1>
+</div>
+</div><div class="slide" data-transition="none"><div class="content subsection" ref="thanks/01_thanks_slides/2">
+<h1>Thanks!</h1>
 </div>
 </div></div>
 <div id="pauseScreen">

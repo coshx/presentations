@@ -1,3 +1,7 @@
 .small-href {
   font-size: 0.7em;
 }
+
+.subsection.red h1 {
+  background-color: #FF0066;
+}
