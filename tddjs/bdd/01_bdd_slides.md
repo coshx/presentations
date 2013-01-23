@@ -62,7 +62,6 @@
 
 <!SLIDE subsection bullets incremental>
 # BDD First Example
-## Discussion
 
 * Wait, was that a test?
 * Where do we go next?
