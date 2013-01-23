@@ -34,10 +34,18 @@
     
       <script type="text/javascript" src="./js/sh_lang/sh_cucumber.min.js"></script>
     
+      <script type="text/javascript" src="./js/sh_lang/sh_html.min.js"></script>
+    
+      <script type="text/javascript" src="./js/sh_lang/sh_javascript.min.js"></script>
+    
   
 
   
+    <link rel="stylesheet" href="./file/coshx.css" type="text/css"/>
+  
 
+  
+    <script type="text/javascript" src="./file/coshx.js"></script>
   
 
   <script type="text/javascript">
@@ -82,14 +90,14 @@
 </div>
 
 <div id="slides" class="offscreen" style="display:none;">
-<div class="slide" data-transition="none"><div class="content subsection" ref="intro/01_slides/1">
+<div class="slide" data-transition="none"><div class="content subsection" ref="intro/01_intro_slides/1">
 <h1>TDD &#x2229; JS</h1>
 
 <p>Ben Taitelbaum, Coshx Labs</p>
 
 <p>CV.js -- January 23, 2013</p>
 </div>
-</div><div class="slide" data-transition="none"><div class="content subsection" ref="intro/01_slides/2">
+</div><div class="slide" data-transition="none"><div class="content subsection" ref="intro/01_intro_slides/2">
 <h1>Overview</h1>
 
 <ul>
@@ -97,16 +105,16 @@
 <li>Examples</li>
 </ul>
 </div>
-</div><div class="slide" data-transition="none"><div class="content subsection incremental" ref="intro/01_slides/3">
+</div><div class="slide" data-transition="none"><div class="content subsection bullets incremental" ref="intro/01_intro_slides/3">
 <h1>Why TDD?</h1>
 
 <ul>
-<li>Great topic for beCraft</li>
+<li>Great topic for discussion (beCraft?)</li>
 <li>Tools in a toolbox</li>
 <li>Show, Don't Tell</li>
 </ul>
 </div>
-</div><div class="slide" data-transition="none"><div class="content subsection incremental" ref="bdd/01_slides/1">
+</div><div class="slide" data-transition="none"><div class="content subsection incremental" ref="bdd/01_bdd_slides/1">
 <h1>BDD</h1>
 
 <ul>
@@ -114,19 +122,19 @@
 <li>Focus on <strong>Outcomes</strong></li>
 </ul>
 </div>
-</div><div class="slide" data-transition="none"><div class="content subsection small" ref="bdd/01_slides/2">
+</div><div class="slide" data-transition="none"><div class="content subsection small" ref="bdd/01_bdd_slides/2">
 <h1>Example: TDD Tool for JavaScript</h1>
 
 <ul>
 <li>Think jsfiddle.net or jsbin.com</li>
 </ul>
 </div>
-</div><div class="slide" data-transition="none"><div class="content subsection smaller" ref="bdd/01_slides/3">
+</div><div class="slide" data-transition="none"><div class="content subsection smaller" ref="bdd/01_bdd_slides/3">
 <h1>Wireframe</h1>
 
 <p><img src="./file/bdd/../img/wireframe_sm.png" width="475" height="600" width="480px"/></p>
 </div>
-</div><div class="slide" data-transition="none"><div class="content subsection smaller" ref="bdd/01_slides/4">
+</div><div class="slide" data-transition="none"><div class="content subsection smaller" ref="bdd/01_bdd_slides/4">
 <h1>BDD</h1>
 
 <h2>User Story (Value Proposition)</h2>
@@ -141,16 +149,87 @@ So I can have confidence in its correctness</code></pre>
 When I type the javascript function into the code panel
 And I type the test into the test panel
 And I click "Run"
-Then I should see the test passing</code></pre>
+Then I should see "Test Passed" in the result area</code></pre>
 </div>
-</div><div class="slide" data-transition="none"><div class="content" ref="bdd/01_slides/5">
-<h1>Jasmine</h1>
+</div><div class="slide" data-transition="none"><div class="content subsection code smaller" ref="bdd/01_bdd_slides/5">
+<h1>BDD First Attempt</h1>
+
+<pre class="sh_html"><code>&lt;button id="run"&gt;Run &#x25B6;&lt;/button&gt;
+&lt;textarea id="test" 
+          placeholder="Enter Test Here" rows="10"/&gt;
+&lt;textarea id="code" 
+          placeholder="Enter Code Here" rows="10"/&gt;
+&lt;div id="result"&gt;Results&lt;/div&gt;
+
+&lt;script&gt;
+  $("#run").on("click", function() {
+    $("#result").text("Test Passed!");
+  });
+&lt;/script&gt;</code></pre>
+</div>
+</div><div class="slide" data-transition="none"><div class="content subsection accepts-input" ref="bdd/01_bdd_slides/6">
+<h1>BDD First Example</h1>
+
+<p><button id="run">Run &#x25B6;</button>
+<textarea id="test" placeholder="Enter Test Here" rows="10"/>
+<textarea id="code" placeholder="Enter Code Here" rows="10"/>
+<div id="result" style="text-align:center; font-size:2em;">Results</div>
+<script>
+  $("#run").on("click", function() {
+    $("#result").text("Test Passed!");
+  });
+</script></p>
+</div>
+</div><div class="slide" data-transition="none"><div class="content subsection bullets incremental" ref="bdd/01_bdd_slides/7">
+<h1>BDD First Example</h1>
+
+<h2>Discussion</h2>
 
 <ul>
-<li>Set Up
-@@@ javascript
-// </li>
+<li>Wait, was that a test?</li>
+<li>Where do we go next?</li>
 </ul>
+</div>
+</div><div class="slide" data-transition="none"><div class="content subsection" ref="tdd/01_tdd_slides/1">
+<h1>Jasmine TDD - Setup</h1>
+
+<ul>
+<li>https://github.com/pivotal/jasmine/downloads</li>
+<li>Edit SpecRunner.html</li>
+</ul>
+</div>
+</div><div class="slide" data-transition="none"><div class="content code smaller small-hrefs" ref="tdd/01_tdd_slides/2">
+<h1>QUnit TDD - Setup</h1>
+
+<pre class="sh_html"><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;title&gt;BDD in QUnit&lt;/title&gt;
+    &lt;link rel="stylesheet" 
+          href="http://jquery.github.com/qunit/qunit/qunit.css"&gt;
+    &lt;script src="http://code.jquery.com/jquery-1.9.0.js"&gt;&lt;/script&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;div id="qunit"&gt;&lt;/div&gt;
+    &lt;div id="qunit-fixture"&gt;
+    &lt;/div&gt;
+    &lt;script src="http://jquery.github.com/qunit/qunit/qunit.js"&gt;&lt;/script&gt;
+    &lt;script src="my_tests.js"&gt;&lt;/script&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+</div>
+</div><div class="slide" data-transition="none"><div class="content code smaller" ref="tdd/01_tdd_slides/3">
+<h1>QUnit Test</h1>
+
+<pre class="sh_javascript"><code>test( "runs tests", function() {
+  var test = 'return myFunction();'
+  var code = 'myFunction = function() { return 5; };'
+  equal(5, runTest(test, code));
+});</code></pre>
+</div>
+</div><div class="slide" data-transition="none"><div class="content subsection" ref="tdd/01_tdd_slides/4">
+<h1>QUnit Test Result</h1>
 </div>
 </div></div>
 <div id="pauseScreen">

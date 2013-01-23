@@ -12,8 +12,8 @@
 * Fluff
 * Examples
 
-<!SLIDE subsection incremental>
+<!SLIDE subsection bullets incremental>
 # Why TDD?
-* Great topic for beCraft
+* Great topic for discussion (beCraft?)
 * Tools in a toolbox
 * Show, Don't Tell
